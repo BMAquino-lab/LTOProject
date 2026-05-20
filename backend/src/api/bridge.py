@@ -14,6 +14,7 @@ from flask_cors import CORS  # <-- ADD THIS
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from database.sql_linker import SQLLinker
+from models.dynamic_join import dynamic_query
 from models.vehicle_model import VehicleModel
 from models.driver_model import DriverModel
 from models.traffic_violation_model import TrafficViolationModel
@@ -352,6 +353,35 @@ def report_vehicles_in_violations_by_area():
     req_data = request.get_json() or {}
     try:
         results = report_model.vehicles_in_violations_by_area(req_data.get('area'))
+        return jsonify({"success": True, "data": results}), 200
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+# Dynamic join =======================================================================================
+@app.route('/api/query/dynamic', methods=['POST'])
+def handle_dynamic_query():
+    req_data = request.get_json() or {}
+    try:
+        #extract all parameters that dynamic_query handles
+        tables = req_data.get('tables', [])
+        selected_columns = req_data.get('selected_columns', [])
+        filters = req_data.get('filters', {})
+        is_count = req_data.get('is_count', False)
+        count_alias = req_data.get('count_alias', "Total Count")
+        group_by_field = req_data.get('group_by_field', None)
+        count_field = req_data.get('count_field', None)
+
+        #execute the automated join query
+        results = dynamic_query(
+            linker=linker,
+            tables=tables,
+            selected_columns=selected_columns,
+            filters=filters,
+            is_count=is_count,
+            count_alias=count_alias,
+            group_by_field=group_by_field,
+            count_field=count_field
+        )
         return jsonify({"success": True, "data": results}), 200
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
