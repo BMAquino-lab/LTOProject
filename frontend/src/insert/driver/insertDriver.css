@@ -1,0 +1,31 @@
+h3{
+    font-size: 20px;
+}
+
+.personal-info{
+    display: grid;
+    grid-template-columns: 2fr 0.5fr 0.5fr;
+    /* fullName, sex, bday */
+    gap: 20px;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.address{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.license-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}

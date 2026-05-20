@@ -1,0 +1,39 @@
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-family: 'Garet', sans-serif;
+    font-size: 16px;
+    color: #1e293b;
+    white-space: nowrap;
+}
+
+.form-group label span {
+    font-size: 12px;
+    font-style: italic;
+    color: #64748b;
+}
+
+.form-group input {
+    height: 44px; 
+    padding: 0 12px; 
+    border: 1px solid #cbd5e1;
+    background-color: #d9dce7; 
+    border-radius: 8px; 
+    font-family: 'Garet', sans-serif;
+    font-size: 14px;
+    color: #0e1e42;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input::placeholder{
+    font-style: italic;
+}
+
+.form-group input:focus {
+    border-color: #0e1e42;
+    background-color: #ffffff;
+}

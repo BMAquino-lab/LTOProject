@@ -1,0 +1,18 @@
+.new-license-number, .registration-number, .registration-date,
+.registration-exp-date, .registration-status, .registration-hist,
+.vehicle-plate-num{
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.registration-status-content{
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+h4{
+    font-weight: 100;
+}

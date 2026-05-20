@@ -1,0 +1,61 @@
+.delete-page {
+    margin: 1.5rem;
+    font-family: "Garet";
+}
+
+.delete-page h1 {
+    color: #bd031a;
+}
+
+.delete-panel {
+    display: grid;
+    grid-template-columns: minmax(180px, 280px) minmax(220px, 1fr) 180px;
+    gap: 1rem;
+    align-items: end;
+    margin-top: 1rem;
+}
+
+.delete-panel label {
+    display: grid;
+    gap: 0.4rem;
+    color: #0e1e42;
+    font-weight: bold;
+}
+
+.delete-panel input,
+.delete-panel select {
+    height: 46px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 0 0.8rem;
+    font-family: "Garet";
+    background-color: #ffffff;
+}
+
+.delete-panel button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.delete-success,
+.delete-error {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+}
+
+.delete-success {
+    background-color: #e7f7ed;
+    color: #12602c;
+}
+
+.delete-error {
+    background-color: #fde8ea;
+    color: #9f0618;
+}
+
+@media (max-width: 760px) {
+    .delete-panel {
+        grid-template-columns: 1fr;
+    }
+}
