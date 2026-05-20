@@ -1,0 +1,18 @@
+.driver-license-type, .driver-license-status, .driver-license-num, .driver-name, .driver-address, .driver-bday{
+    margin-top: 20px;
+}
+
+.driver-license-type-content, .driver-license-status-content{
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.driver-name, .driver-address{
+    width: 100%;
+}
+
+h4{
+    font-weight: 100;
+}

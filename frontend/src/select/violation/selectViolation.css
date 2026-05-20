@@ -1,0 +1,29 @@
+.violation {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.select-violation, 
+.where-violation {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    gap: 20px; 
+    width: 100%;
+}
+
+h2 {
+    color: #0e1e42;
+    margin: 0; 
+    white-space: nowrap; 
+    /* min-width: 140px; */
+}
+
+.select-violation-dropdown,
+.where-violation-dropdown {
+    flex-grow: 1;
+    width: 100%; 
+}

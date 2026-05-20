@@ -1,0 +1,21 @@
+.violation {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.update-violation, 
+.where-violation {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #0e1e42;
+    margin: 0; 
+}

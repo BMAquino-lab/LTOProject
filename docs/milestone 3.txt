@@ -1,0 +1,205 @@
+CREATE TABLES
+- - create table for driver
+- - will make some changes here bukas na lang HAHAHAH
+CREATE TABLE driver(
+	license_number CHAR(13) PRIMARY KEY,
+	full_name VARCHAR(150) NOT NULL,
+	address TEXT NOT NULL,
+	license_type VARCHAR(20) NOT NULL,
+	sex CHAR(1) NOT NULL,
+	date_of_birth DATE NOT NULL,
+	license_status VARCHAR(20) NOT NULL
+);
+
+
+
+- - create table for vehicle
+CREATE TABLE vehicle(
+	plate_number VARCHAR(20) PRIMARY KEY,
+	engine_number VARCHAR(30) UNIQUE NOT NULL,
+	chassis_number VARCHAR(30) UNIQUE NOT NULL,
+	vehicle_type VARCHAR(20), 
+	make VARCHAR(30) NOT NULL,
+	model VARCHAR(30) NOT NULL,
+	color VARCHAR(20) NOT NULL,
+	year_manufactured YEAR NOT NULL,
+	owner VARCHAR(13),
+	CONSTRAINT owner_fk 
+FOREIGN KEY(owner) 
+REFERENCES DRIVER(license_number) ON UPDATE CASCADE
+);
+
+
+
+- - create table for vehicle registration
+CREATE TABLE vehicle_registration(
+	registration_number VARCHAR(16) PRIMARY KEY,
+	registration_date DATE NOT NULL,
+	expiration_date DATE NOT NULL,
+	registration_status VARCHAR(20) NOT NULL,
+	history TEXT,
+	plate_number VARCHAR(20),
+	CONSTRAINT vehiclereg_platenum_fk 
+FOREIGN KEY (plate_number) 
+REFERENCES VEHICLE(plate_number) ON UPDATE CASCADE
+);
+
+
+- - create table for traffic violation
+CREATE TABLE traffic_violation(
+	violation_ticket_num INT(7) AUTO_INCREMENT,
+	CONSTRAINT ticket_num PRIMARY KEY(violation_ticket_num),
+	violation_date DATE NOT NULL,
+	violation_type VARCHAR(20) NOT NULL,
+	location TEXT NOT NULL,
+	violation_status VARCHAR(20) NOT NULL,
+	apprehending_officer VARCHAR(150) NOT NULL,
+	fine_amount DECIMAL (10,2)NOT NULL,
+	license_number CHAR(13),
+CONSTRAINT license_number_fk 
+FOREIGN KEY (license_number) 
+REFERENCES DRIVER(license_number),
+plate_number VARCHAR(20),
+CONSTRAINT plate_number_fk 
+FOREIGN KEY(plate_number) 
+REFERENCES VEHICLE(plate_number)
+);
+
+INSERTION OF ROWS
+- - adding new driver
+INSERT INTO driver VALUES(
+“N01-23-456789”, 
+“Juan Dela Cruz”, 
+San Ignacio, San Pablo, Laguna, 
+”Student Permit”,
+“M”,
+“2004-01-23”,
+“ACTIVE”
+);
+
+- - adding new vehicle
+INSERT INTO vehicle VALUES(
+	“ABC 1234”,,
+	“DEF5678”,
+	“1HGCM82633A123456”,
+	“Private Car”,
+	“Toyota”,
+	“Innova”,
+	“Gray”,
+	“2005”,
+	“N01-23-456789”
+);
+
+- - adding newly registered vehicle
+INSERT INTO vehicle_registration VALUES (
+	“1230-00000456789”,
+	CURDATE(),
+	DATE_ADD(CURDATE(), INTERVAL 5 YEAR),
+	“ACTIVE”,
+	CURDATE(),
+	“ABC 1234”
+);
+
+- - inserting violations
+INSERT INTO traffic_violation ( 
+- - no violation_ticket_num since its automatically generated
+    	violation_date, 
+violation_type, 
+location, 
+violation_status, 
+apprehending_officer, 
+fine_amount, 
+license_number, 
+plate_number
+)VALUES(
+	“2026-04-01”,
+	“Overspeeding”,
+	“Batong Malake, Los Baños, Laguna”,
+	“UNPAID”,
+	“Garcia, John Mark A.”,
+	1000.00,
+	“N01-23-456789”,
+	“ABC 1234”
+);
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT STATEMENTS
+(1) View all registered drivers filtered by: License type, License status, Age range, Sex
+SELECT full_name FROM driver 
+WHERE license_type = “Student Permit” AND 
+license_status = “Valid” AND 
+age>=20 AND 
+sex=”M”
+
+(2) View all vehicles owned by a given driver.
+SELECT d.full_name, v.plate_number, v.make, v.model, FROM driver d 
+JOIN  vehicle d ON d.license_number = v.license_number
+WHERE d.full_name = “Juan Dela Cruz”;
+
+(3) View all vehicles with expired registrations as of a given date.
+SELECT * FROM vehicle v
+	JOIN vehicle_registration vr ON  v.plate_number = vr.plate_number
+WHERE DATEDIFF(CURDATE(), expiration_date) > 0;
+
+(4) View all drivers with expired or suspended licenses.
+SELECT * FROM driver 
+	WHERE license_status = “Suspended” OR 
+license_status = “Expired”;
+
+(5) View all traffic violations committed by a given driver within a specified date range.
+SELECT d.full_name, t.violation_type, t.violation_data, t.location, t.fine_amount FROM traffic_violation t 
+JOIN driver d ON t.license_number = d.license_number 
+WHERE d.full_name = “Banzuela, Eitan Andrei P.” AND 
+t.violation_date 
+BETWEEN “2026-01-01” AND “2026-12-31”;
+
+(6) View the total number of violations per violation type for a given year.
+SELECT violation_type, COUNT(violation_type) AS total_violations 
+FROM traffic_violation 
+WHERE violation_data LIKE “%2026” 
+GROUP BY violation_type;
+
+(7) View all vehicles involved in violations within a given city or region.
+SELECT v.plate_number, v.make, v.model, t.violation_type, t.location 
+FROM traffic_violation t 
+JOIN vehicle v ON t.plate_number = v.plate_number 
+WHERE t.location LIKE '%Dasmariñas%';
+
+UPDATE STATEMENTS
+(1)  Reregistering on a certain vehicle
+UPDATE vehicle_registration SET
+	history = CONCAT(registration_date, “;”, “ “, CURDATE()),
+	registration_date = CURDATE(),
+	expiration_date = DATE_ADD(CURDATE(), INTERVAL 1 YEAR),
+	registration_status = “ACTIVE”,
+WHERE plate_number = “ABC 1234”;
+
+(2) Updating the expired vehicle status
+UPDATE vehicle_registration SET
+	registration_status = “EXPIRED”
+WHERE expiration_date < CURDATE();
+
+(3) Updating the violation status of a specific driver and vehicle (paid)
+UPDATE traffic_violation SET
+	violation_status = “PAID”
+WHERE plate_number = “ABC 11234” AND 
+license_number = “N01-23-456789”;
+
+(4) Updating the violation status of a specific driver and vehicle (contested)
+UPDATE traffic_violation SET
+	violation_status = “CONTESTED”
+WHERE plate_number = “ABC 11234” AND 
+license_number = “N01-23-456789”;
+
+
+

@@ -1,0 +1,12 @@
+h3{
+    font-size: 20px;
+}
+
+.registration-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 15px;
+}

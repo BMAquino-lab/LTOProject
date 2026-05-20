@@ -1,0 +1,21 @@
+h3{
+    font-size: 20px;
+}
+
+.violation-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.violation-deets{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 15px;
+}

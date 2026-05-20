@@ -1,0 +1,20 @@
+.violation-ticket-num, .violation-date, .violation-type, 
+.violation-loc, .violation-status, .violation-officer,
+.violation-fine, .driver-license-num-fk, .vehicle-plate-num-fk{
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.violation-status-content{
+    /* display: grid; */
+    /* grid-template-columns: 1fr   1fr; */
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+h4{
+    font-weight: 100;
+}

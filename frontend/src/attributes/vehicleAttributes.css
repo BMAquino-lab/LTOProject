@@ -1,0 +1,18 @@
+.vehicle-plate-num, .vehicle-engine-num, .vehicle-chassis-num,
+.vehicle-make, .vehicle-model, .vehicle-color, .vehicle-year-manufactured,
+.vehicle-owner, .vehicle-type{
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.vehicle-type-content{
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+h4{
+    font-weight: 100;
+}

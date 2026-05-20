@@ -1,0 +1,39 @@
+.lto-navbar{
+    background: #0e1e42;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    box-sizing: border-box;
+    font-family: "Garet";
+}
+
+.navbar-links{
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding-bottom: 4px;
+}
+
+
+.nav-btn:hover {
+    color: #ffffff;
+}
+
+.nav-btn.active {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline 1.5px;
+    text-underline-offset: 3px;
+}
