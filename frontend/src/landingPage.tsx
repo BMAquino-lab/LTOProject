@@ -1,7 +1,9 @@
 import ltoLogo from "./assets/lto_logo.png";
 import "./landingPage.css"
+import { useNavigate } from 'react-router-dom';
 
 function LandingPage(){
+    const navigate = useNavigate();
     return(
         <>
         <div className="page-container">
@@ -14,7 +16,7 @@ function LandingPage(){
                         SYSTEM
                     </h1>
                     
-                    <button className="query-btn">
+                    <button className="query-btn" onClick={()=> navigate('/select')}>
                         START QUERY
                         <span className="arrow">→</span>
                     </button>
