@@ -1,3 +1,11 @@
+.violation-component{
+    display: grid;
+    grid-template-columns: 0.60fr 0.40fr;
+    gap: 25px;
+    width: 100%;
+    margin-top: 30px;
+}
+
 .violation {
     display: flex;
     flex-direction: column;

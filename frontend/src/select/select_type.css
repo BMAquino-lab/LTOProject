@@ -1,0 +1,70 @@
+.query-builder-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: "Garet";
+}
+
+.query-type-row{
+    margin-top: 30px;
+}
+
+.query-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    gap: 16px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+.query-label-text,
+.checkbox-card {
+    width: 180px; 
+    min-width: 180px;
+    box-sizing: border-box;
+}
+
+.query-label-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0e1e42;
+    white-space: nowrap;
+}
+
+.checkbox-card {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    border: 2px solid #0e1e42;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.checkbox-card.tall {
+    min-height: 48px;
+}
+
+.checkbox-label {
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: #0e1e42;
+    line-height: 1.2;
+}
+
+.checkbox-card input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #0e1e42;
+}
+
+.dropdown-wrapper {
+    flex-grow: 1;
+}
+
+.checkbox-card.active {
+    background-color: #f4f6fa;
+}

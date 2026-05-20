@@ -1,3 +1,11 @@
+.registration-component{
+    display: grid;
+    grid-template-columns: 0.60fr 0.40fr;
+    gap: 25px;
+    width: 100%;
+    margin-top: 30px;
+}
+
 .registration {
     display: flex;
     flex-direction: column;
@@ -24,6 +32,6 @@ h2 {
 
 .select-registration-dropdown,
 .where-registration-dropdown {
-    flex-grow: 1; /* Forces the dropdown to stretch and fill the remaining row space */
+    flex-grow: 1;
     width: 100%; 
 }

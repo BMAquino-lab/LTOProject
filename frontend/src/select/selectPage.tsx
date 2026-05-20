@@ -65,44 +65,44 @@ const customStyles: StylesConfig<OptionType, true> = {
     }),
 };
 
+    const renderAttri = (value: string) => {
+        switch (value){
+            case "driver":
+                return <SelectDriver key="driver"/>;
+            case "vehicle":
+                return <SelectVehicle key="vehicle"/>;
+            case "registration":
+                return <SelectRegistration key="registration"/>;
+            case "violation":
+                return <SelectViolation key="violation"/>;
+            default:
+                return null;
+        }
+    }
+
 function SelectPage() {
     const [selectedOptions, setSelectedOptions] = useState<MultiValue<OptionType>>([]);
-    const [runKey, setRunKey] = useState(0); // increment to trigger run
-
-    const handleRun = () => setRunKey(k => k + 1);
-    const handleRestart = () => {
-        setSelectedOptions([]);
-        setRunKey(0);
-    };
-
-    const renderAttri = (value: string) => {
-        switch (value) {
-            case "driver":     return <SelectDriver key="driver" runKey={runKey} />;
-            case "vehicle":    return <SelectVehicle key="vehicle" runKey={runKey} />;
-            case "registration": return <SelectRegistration key="registration" runKey={runKey} />;
-            case "violation":  return <SelectViolation key="violation" runKey={runKey} />;
-            default: return null;
-        }
-    };
 
     return (
         <div className='header-container'>
             <h1>SELECT QUERY</h1>
             <div className='header-row'>
+                {/* dropdown menu */}
                 <div className='dropdown'>
                     <Select
-                        isMulti
-                        options={options}
-                        value={selectedOptions}
-                        onChange={(newValue) => setSelectedOptions(newValue)}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        styles={customStyles}
+                    isMulti
+                    options={options}
+                    value={selectedOptions}
+                    onChange={(newValue) => setSelectedOptions(newValue)}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    styles={customStyles}
                     />
                 </div>
-                <button onClick={handleRun}>▶ RUN</button>
-                <button onClick={handleRestart}>↻ RESTART</button>
+                <button>▶ RUN</button>
+                <button>↻ RESTART</button>
             </div>
+            
             {selectedOptions.map((option) => renderAttri(option.value))}
         </div>
     );
