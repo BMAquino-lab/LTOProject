@@ -118,10 +118,3 @@ class VehicleRegistrationModel:
         result = cursor.fetchone()
         return result if result else "No data found for the given plate number"
 
-    def delete(self, registration_number):
-        if not registration_number:
-            return False
-
-        cursor = self.linker.cur()
-        query = "DELETE FROM vehicle_registration WHERE registration_number = %s"
-        return cursor.execute(query, (registration_number,))

@@ -72,7 +72,8 @@ INSERT INTO driver (
 ('N02-20-222222', 'Maria Clara Santos', 'Poblacion, Los Banos, Laguna', 'Professional', 'F', '1988-11-20', '2020-11-20', 'Valid'),
 ('N03-30-333333', 'Ricardo D. Dalisay', 'San Antonio, Makati City', 'Non-Professional', 'M', '2000-01-10', '2023-02-15', 'Valid'),
 ('N04-40-444444', 'Elena G. Moretti', 'Batong Malake, Los Banos, Laguna', 'Student Permit', 'F', '2006-09-30', '2024-03-01', 'Valid'),
-('N05-50-555555', 'Antonio P. Luna', 'Salitran II, Dasmarinas, Cavite', 'Professional', 'M', '1975-06-12', '2014-06-12', 'Suspended');
+('N05-50-555555', 'Antonio P. Luna', 'Salitran II, Dasmarinas, Cavite', 'Professional', 'M', '1975-06-12', '2014-06-12', 'Suspended'),
+('N06-60-666666', 'Mary D. Padilla', 'Paliparan II, Dasmarinas, Cavite', 'Student', 'F', '1975-06-12', '2014-06-12', 'Expired');
 
 INSERT INTO vehicle VALUES
 ('ABC 1234', 'ENG-101010', 'CHAS-A1B2C3D4E5', 'Private Car', 'Toyota', 'Vios', 'Silver', 2021, 'N01-10-111111'),

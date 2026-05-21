@@ -106,20 +106,12 @@ class DriverModel:
             return True #Returns true if successful update
         #Returns false if not
         return False #Prevents updating the whole table
-
-    def delete(self, license_number):
-        if not license_number:
-            return False
-
-        cursor = self.linker.cur()
-        query = "DELETE FROM driver WHERE license_number = %s"
-        return cursor.execute(query, (license_number,))
     
     #calls this for auto updating expired licenses
     #pls call this during sign in as well to ensure data is updated
     def expire_licenses(self):
         cursor = self.linker.cur()
-        query = "UPDATE driver SET license_status = 'Expired' WHERE date_expired < CURDATE()"
+        query = "UPDATE driver SET license_status = 'Expired' WHERE date_expired < CURDATE() AND license_status != 'Suspended'"
         return cursor.execute(query)
     
     #finds the owner of a vehicle given the plate number

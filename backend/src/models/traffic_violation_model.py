@@ -74,13 +74,6 @@ class TrafficViolationModel:
         params = (new_status, violation_ticket_num)
         return cursor.execute(query, params)
 
-    def delete(self, violation_ticket_num):
-        if not violation_ticket_num:
-            return False
-
-        cursor = self.linker.cur()
-        query = "DELETE FROM traffic_violation WHERE violation_ticket_num = %s"
-        return cursor.execute(query, (violation_ticket_num,))
     
     #counting violations for reports
     def count_violations_by_driver(self, license_number):

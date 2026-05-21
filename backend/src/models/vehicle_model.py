@@ -114,10 +114,3 @@ class VehicleModel:
             return True
         return False
 
-    def delete(self, plate_number):
-        if not plate_number:
-            return False
-
-        cursor = self.linker.cur()
-        query = "DELETE FROM vehicle WHERE plate_number = %s"
-        return cursor.execute(query, (plate_number,))
