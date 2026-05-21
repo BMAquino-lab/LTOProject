@@ -6,7 +6,6 @@ import InsertPage from './insert/insertPage.tsx';
 import NavBar from "./navbar/navbar.tsx";
 import UpdatePage from "./update/updatePage.tsx";
 import SelectPage from "./select/selectPage.tsx";
-import DeletePage from "./delete/deletePage.tsx";
 import ReportsPage from "./reports/reportsPage.tsx";
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
           <Route path="/select" element={<SelectPage/>}/>
           <Route path="/insert" element={<InsertPage/>}/>
           <Route path="/update" element={<UpdatePage/>}/>
-          <Route path="/delete" element={<DeletePage/>}/>
           <Route path="/reports" element={<ReportsPage/>}/>
         </Routes>
       </div>

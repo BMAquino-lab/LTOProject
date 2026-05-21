@@ -221,6 +221,29 @@ app.post('/api/reports/vehicles-in-violations-by-area', (req, res) => {
     forwardToBridge(res, 'POST', '/reports/vehicles-in-violations-by-area', { area });
 });
 
+//Dynamic Join =======================================================================================
+app.post('/api/query/dynamic', (res,req)=>{
+    const{
+        tables, 
+        selected_columns, 
+        filters, 
+        is_count, 
+        count_alias, 
+        group_by_field, 
+        count_field
+    } = req.body;
+
+    forwardToBridge(res, 'POST', '/query/dynamic', { 
+        tables, 
+        selected_columns, 
+        filters, 
+        is_count, 
+        count_alias, 
+        group_by_field, 
+        count_field 
+    });
+});
+
 app.listen(PORT, () => {
     console.log(`LTO proxy server running on http://localhost:${PORT}`);
 });
