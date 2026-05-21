@@ -77,10 +77,14 @@ function SelectPage() {
 
     const renderAttri = (value: string) => {
         switch (value) {
-            case "driver":     return <SelectDriver key="driver" runKey={runKey} />;
-            case "vehicle":    return <SelectVehicle key="vehicle" runKey={runKey} />;
-            case "registration": return <SelectRegistration key="registration" runKey={runKey} />;
-            case "violation":  return <SelectViolation key="violation" runKey={runKey} />;
+            case "driver":     
+                return <div className="animated-panel" key="driver"><SelectDriver runKey={runKey} /></div>;
+            case "vehicle":    
+                return <div className="animated-panel" key="vehicle"><SelectVehicle runKey={runKey} /></div>;
+            case "registration": 
+                return <div className="animated-panel" key="registration"><SelectRegistration runKey={runKey} /></div>;
+            case "violation":  
+                return <div className="animated-panel" key="violation"><SelectViolation runKey={runKey} /></div>;
             default: return null;
         }
     };

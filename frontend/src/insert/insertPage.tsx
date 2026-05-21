@@ -202,13 +202,13 @@ function InsertPage() {
     const renderForm = (value: string) => {
         switch (value) {
             case "driver":
-                return <InsertDriver key="driver" data={driverData} onChange={setDriverData} />;
+                return <div className="animated-panel" key="driver"><InsertDriver key="driver" data={driverData} onChange={setDriverData} /></div>;
             case "vehicle":
-                return <InsertVehicle key="vehicle" data={vehicleData} onChange={setVehicleData} />;
+                return <div className="animated-panel" key="driver"><InsertVehicle key="vehicle" data={vehicleData} onChange={setVehicleData} /></div>;
             case "registration":
-                return <InsertRegistration key="registration" data={registrationData} onChange={setRegistrationData} />;
+                return <div className="animated-panel" key="driver"><InsertRegistration key="registration" data={registrationData} onChange={setRegistrationData} /></div>;
             case "violation":
-                return <InsertViolation key="violation" data={violationData} onChange={setViolationData} />;
+                return <div className="animated-panel" key="driver"><InsertViolation key="violation" data={violationData} onChange={setViolationData} /></div>;
             default:
                 return null;
         }

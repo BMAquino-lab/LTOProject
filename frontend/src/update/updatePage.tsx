@@ -66,13 +66,13 @@ function UpdatePage() {
     const renderAttri = (value: string) => {
         switch (value){
             case "driver":
-                return <UpdateDriver key="driver" runKey={runKey}/>;
+                return <div className="animated-panel" key="driver"> <UpdateDriver key="driver" runKey={runKey}/> </div>;
             case "vehicle":
-                return <UpdateVehicle key="vehicle" runKey={runKey}/>;
+                return <div className="animated-panel" key="driver"><UpdateVehicle key="vehicle" runKey={runKey}/> </div>;
             case "registration":
-                return <UpdateRegistration key="registration" runKey={runKey}/>;
+                return <div className="animated-panel" key="driver"><UpdateRegistration key="registration" runKey={runKey}/> </div>;
             case "violation":
-                return <UpdateViolation key="violation" runKey={runKey}/>;
+                return <div className="animated-panel" key="driver"><UpdateViolation key="violation" runKey={runKey}/> </div>;
             default:
                 return null;
         }
