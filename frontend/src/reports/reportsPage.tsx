@@ -153,7 +153,7 @@ function ReportsPage() {
                 )}
 
                 <button onClick={runReport} disabled={loading}>
-                    {loading ? 'RUNNING...' : 'RUN REPORT'}
+                    {loading ? 'RUNNING...' : '▶RUN REPORT'}
                 </button>
             </div>
 

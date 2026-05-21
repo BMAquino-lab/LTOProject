@@ -93,8 +93,8 @@ function UpdatePage() {
                     styles={customStyles}
                     />
                 </div>
-                <button onClick={handleRun}>RUN</button>
-                <button onClick={handleRestart}>RESTART</button>
+                <button onClick={handleRun}>▶RUN</button>
+                <button onClick={handleRestart}>↻RESTART</button>
             </div>
 
             {selectedOptions.map((option) => renderAttri(option.value))}

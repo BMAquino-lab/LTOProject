@@ -6,7 +6,6 @@ const navLinks = [
     {name: "SELECT", path: "/select"},
     {name: "INSERT", path: "/insert"},
     {name: "UPDATE", path: "/update"},
-    {name: "DELETE", path: "/delete"},
     {name: "REPORTS", path: "/reports"},
 ];
 

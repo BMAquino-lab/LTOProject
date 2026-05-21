@@ -230,9 +230,9 @@ function InsertPage() {
                     />
                 </div>
                 <button onClick={handleRun} disabled={loading}>
-                    {loading ? 'Running...' : 'RUN'}
+                    {loading ? 'Running...' : '▶RUN'}
                 </button>
-                <button onClick={handleRestart}>RESTART</button>
+                <button onClick={handleRestart}>↻RESTART</button>
             </div>
 
             {message && (
