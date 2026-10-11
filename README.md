@@ -91,8 +91,25 @@ cd frontend
 npm run build
 ```
 
-Python syntax check:
+Backend regression tests (after installing `backend/requirements.txt`):
 
 ```bash
-python -m py_compile backend/src/api/bridge.py backend/src/models/*.py
+python -m unittest discover -s backend/tests -v
 ```
+
+These tests import the Flask API from a fresh checkout and exercise vehicle search,
+report responses, and insert commit/rollback behavior with a fake database connection.
+They do not require `sql_linker.py`, local credentials, or a running MariaDB service.
+They do not verify queries against a real MariaDB database.
+
+Python and proxy syntax checks, from the project root:
+
+```bash
+python -m compileall -q backend/src backend/tests
+node --check backend/src/server.js
+```
+
+GitHub Actions runs these backend checks on pull requests and pushes to `main`.
+The unused `/api/query/dynamic` endpoint was removed with its stale references to
+the deleted dynamic-query modules; the frontend uses the table-specific search
+endpoints and the report endpoints.
